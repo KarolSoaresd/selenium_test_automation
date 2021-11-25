@@ -1,4 +1,4 @@
-package cadastro.test.automation;
+package cadastro_test_automation.web;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
@@ -73,5 +73,18 @@ public class CadastroTest {
 
         Assert.assertTrue(paginaDeCadastro.campoDeCadastroRealizados());
         Assert.assertTrue(paginaDeCadastro.emailCadastrado());
+    }
+
+    @Test
+    public void excluirCadastroRealizado(){
+        this.paginaDeCadastro.preencherNome("Karoline Soares dos Santos");
+        this.paginaDeCadastro.preencherEmail("karol.santos@gmail.com");
+        this.paginaDeCadastro.preencherSenha("12345678");
+        this.paginaDeCadastro.efetuarCadastro();
+        this.paginaDeCadastro.excluirCadastro();
+
+        Assert.assertTrue(paginaDeCadastro.isPaginaAtual());
+        Assert.assertNull(paginaDeCadastro.camposVazios("","",""));
+        Assert.assertFalse(paginaDeCadastro.campoDeCadastroRealizados());
     }
 }

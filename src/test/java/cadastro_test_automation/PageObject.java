@@ -1,4 +1,4 @@
-package cadastro.test.automation;
+package cadastro_test_automation;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,11 +18,9 @@ public class PageObject {
         }
         this.browser.manage().timeouts()
                 .implicitlyWait(5, TimeUnit.SECONDS);
-//        função serve para limitar as espera dos testes
     }
 
     public void fechar(){
-
         this.browser.quit();
     }
 }

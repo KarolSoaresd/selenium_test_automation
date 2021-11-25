@@ -1,9 +1,9 @@
-package cadastro.test.automation;
+package cadastro_test_automation.web;
 
+import cadastro_test_automation.PageObject;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-public class CadastroPage extends PageObject{
+public class CadastroPage extends PageObject {
 
     private static final String URL_CADASTRO= "http://prova.stefanini-jgr.com.br/teste/qa/";
 
@@ -13,18 +13,22 @@ public class CadastroPage extends PageObject{
     }
 
     public void preencherNome(String name){
+
         browser.findElement(By.id("name")).sendKeys(name);
     }
 
     public void preencherEmail(String email){
+
         browser.findElement(By.id("email")).sendKeys(email);
     }
 
     public void preencherSenha(String senha){
+
         browser.findElement(By.id("password")).sendKeys(senha);
     }
 
     public void efetuarCadastro(){
+
         browser.findElement(By.id("register")).click();
     }
 
@@ -52,10 +56,6 @@ public class CadastroPage extends PageObject{
 
     }
 
-    public boolean cadastroEfetivado(String nameID) {
-        browser.findElement(By.id("tdUserName1")).sendKeys(nameID);
-        return false;
-    }
 
     public boolean campoDeCadastroRealizados() {
         return browser.getPageSource().contains("Usuários cadastrados");
@@ -63,5 +63,16 @@ public class CadastroPage extends PageObject{
 
     public boolean emailCadastrado() {
         return browser.getPageSource().contains("karol.santos@gmail.com");
+    }
+
+    public void excluirCadastro() {
+        browser.findElement(By.xpath("//*[@id=\"removeUser1\"]")).click();
+    }
+
+    public Object camposVazios(String email, String name, String senha) {
+        browser.findElement(By.id("email")).sendKeys(email);
+        browser.findElement(By.id("password")).sendKeys(senha);
+        browser.findElement(By.id("password")).sendKeys(senha);
+        return null;
     }
 }
